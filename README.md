@@ -25,8 +25,22 @@ sudo search ip/mac
 sudo hack <IP> <MAC>
 sudo connect 0 / list
 
+## Системные требования
+- Windows 10/11 (x64 или x86 — пох)  
+- 16 МБ RAM  
+- 50 КБ на диске  
+- Энергос или банка балтики
+
+## Установка
+1. Скачиваешь DezzOS.exe  
+2. Кидаешь в любую папку  
+3. Запускаешь  
+4. Ломаешь реальность
+
 ## Скрины
 <img width="958" height="479" alt="изображение" src="https://github.com/user-attachments/assets/8fcc3a99-6d75-4c65-9a7e-7d582a8bee31" />
 <img width="962" height="478" alt="изображение" src="https://github.com/user-attachments/assets/9922b116-6d62-4b16-aa34-6b45dd625595" />
 <img width="960" height="474" alt="изображение" src="https://github.com/user-attachments/assets/5da5f2d7-52fa-4ebc-86ab-a970f5a4c961" />
 <img width="962" height="480" alt="изображение" src="https://github.com/user-attachments/assets/280ba4ca-96f6-494a-a706-a286bb4d0de5" />
+
+**TheBrokenDezz was here 💀**  

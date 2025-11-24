@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:4996)
 
 #include <iostream>
@@ -6,6 +6,12 @@
 #include <String>
 #include <fstream>
 using namespace std;
+
+const string WelcomWords[]{"Welcome, hacker!\n", "Dezz see you...\n", "This is madness...\n", "You're here again?\n", "He can already see you...\n", 
+                           "I See You!\n", "Trololololo\n", "Try: \"Dezz\" ^_^\n", "It's not possible!\n", "He is already nearby...\n", "А че мы тута читаем? А?"};
+
+const string LoadingAnim[]{"[--------------------] 0%", "[##------------------] 10%", "[####----------------] 20%", "[######--------------] 30%", "[########------------] 40%",
+                           "[##########----------] 50%", "[############--------] 60%", "[##############------] 70%", "[################----] 80%", "[##################--] 90%",  "[####################] 100%"};
 
 string folder = string(getenv("USERPROFILE")) + "\\Documents";
 string path = folder + "\\save.dezz";
@@ -19,7 +25,7 @@ bool HackLevel = false;
 bool ActiveSystem;
 
 const string Controller[] = { "DezzOS@user ~$ ", "\x1b[36mDezzOS@root ~$ \x1b[0m", "\x1b[31mDezzOS@hack ~$ \x1b[0m" };
-const string controllerName = "\t\t\t\t\t\tController v1.0";
+const string controllerName = "\t\t\t\t\t\tController v2.0";
 const string MacList[]{ "C7","47", "AE", "K5", "49", "JM", "ED", "A8", "C2", "C4","A6",
                      "DE", "ZZ", "26", "7L", "3M", "0X", "4O", "9G", "G6", "7Q","AU" };
 int Ips[3];
@@ -111,7 +117,7 @@ void Commands(string EnteredCommand) {
 
 
         cout << ColorGreen << "Название системы: DezzOS" << 
-                              "\nВерсия контроллера: v1.0" << 
+                              "\nВерсия контроллера: v2.0" << 
                               "\nIp адрес: " << IpUser[0] << "." << IpUser[1] << "." << IpUser[2] << "." << IpUser[3] <<
                               "\nДата создания сборки: " << DataCreateOS <<
                               "\nРут права: " << rights << 
@@ -193,14 +199,22 @@ void Commands(string EnteredCommand) {
 
     // Поиск айпи и мак адрессов                           Search ip and Mac
     else if (EnteredCommand == "sudo search ip" && rights > 0) {
-        cout << "Ищу IP жертвы...\n";
+        cout << ColorGreen << "Ищу жертву...\n";
         Sleep(1500);
+        cout << ColorGreen << "Подбираю ее ip...\n" << DefaultColor;
         Ips[0] = { rand() % 199 }; Ips[1] = { rand() % 199 }; Ips[2] = { rand() % 199 }; Ips[3] = { rand() % 199 };
+        for (int i = 0; i <= 9; i++)
+        {
+            cout << ColorGreen << LoadingAnim[i] << endl;
+            Sleep(i * 200);
+
+        }
+        cout << ColorGreen << LoadingAnim[10] << DefaultColor << endl;
         cout << ColorGreen << "[+] " << DefaultColor << ColorSuccess << "Жертва найдена!" << DefaultColor << ColorGreen << "\nЕё ip адрес: "
         << Ips[0] << "." << Ips[1] << "." << Ips[2] << "." << Ips[3] << DefaultColor << endl;
     }
     else if (EnteredCommand == "sudo search mac" && rights > 0) {
-        cout << "Ищу MAC жертвы...\n";
+        cout << "Подбираю MAC жертвы...\n";
         Sleep(2000);
         cout << ColorGreen << "[+] " << DefaultColor << ColorSuccess << "Жертва найдена!" << DefaultColor << ColorGreen << "\nЕё MAC адрес: ";
         srand(time(NULL));
@@ -277,6 +291,14 @@ void Commands(string EnteredCommand) {
             cout << ColorGreen << "[+] Цель подтверждена!\n";
             cout << "[+] Получение данных..." << endl;
             Sleep(2000);
+            for (int i = 0; i <= 9; i++)
+            {
+                cout << ColorGreen << LoadingAnim[i] << endl;
+                Sleep(i * 350);
+
+            }
+            cout << ColorGreen << LoadingAnim[10] << DefaultColor << endl;
+            Sleep(500);
             cout << "[+] Получены данные!\n" << DefaultColor;
             cout << ColorSuccess << "[SUCCESS] Взом завершен " << DefaultColor << endl;
             rights = 2; // hack-режим
@@ -388,9 +410,28 @@ void OS() {
 
 }
 
+void WelcomeMenu() {
+    setlocale(LC_ALL,"Ru");
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\tДобро пожаловать! \n\n\n\t\t\t\t\t\tDezzOS ждет вас. . .\n\t\t\t\t   ";
+    system("pause");
+    system("cls");
+
+}
+
 
 int main() {
 	StartOS();
+
+    system("cls");
+    srand(time(NULL));
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t" << WelcomWords[rand() % 9];
+    Beep(500,500); // тут нет скрытого послания)
+    Beep(500,500); // тут тоже нет
+    Beep(500,500); // и тут тоже
+    system("cls");
+
+    WelcomeMenu();
+
     OS();
     return 0;
 }
